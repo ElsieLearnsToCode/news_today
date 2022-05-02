@@ -10,7 +10,7 @@ def index():
     View root page function that returns the index page and its data
     '''
     message = 'Welcome to News Today: Reliable, Timely and Objective'
-    title = 'Home - Welcome to The best Movie Review Website Online'
+    title = 'News Today'
     return render_template('index.html', title = title, message = message)
 
 @app.route('/sources/<id>')
