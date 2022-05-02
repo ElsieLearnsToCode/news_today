@@ -12,10 +12,10 @@ def index():
     message = 'Welcome to News Today: Reliable, Timely and Objective'
     return render_template('index.html',message = message)
 
-@app.route('/articles/<id>')
-def sources(sources_id):
+@app.route('/sources/<id>')
+def sources(id):
 
     '''
-    View sources/articles function that returns the articles page and its data
+    View sources/articles function that returns the sources page and its data
     '''
-    return render_template('sources.html',id = sources_id)
+    return render_template('sources.html',id = id)
