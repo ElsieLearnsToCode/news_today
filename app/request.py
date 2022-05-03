@@ -34,11 +34,11 @@ def get_news_sources(category):
 
         if get_sources_response['sources']:
             sources_results_list = get_sources_response['sources']
-            sources_results = process_sources(sources_results_list)
+            sources_results = process_news_sources(sources_results_list)
 
     return news_sources_results
 
-def process_sources(sources_list):
+def process_news_sources(sources_list):
     '''
     Function that processes the news sources results and turns them into a list of objects
     Args:
@@ -64,3 +64,39 @@ def process_sources(sources_list):
 
     return sources_results
 
+def get_news_articles(id):
+    '''
+    Function that processes the articles and returns a list of articles objects
+    '''
+    get_news_articles_url = articles_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_news_articles_url) as url:
+        articles_results = json.loads(url.read())
+
+
+        articles_object = None
+        if articles_results['articles']:
+            articles_object = process_news_articles(articles_results['articles'])
+
+    return articles_object
+
+def process_news_articles(articles_list):
+    '''
+    '''
+    articles_object = []
+    for article in articles_list:
+        id = article.get('id')
+        author = article.get('author')
+        title = article.get('title')
+        description = article.get('description')
+        url = article.get('url')
+        image = article.get('urlToImage')
+        date = article.get('publishedAt')
+        
+        if image:
+            articles_result = Articles(id,author,title,description,url,image,date)
+            articles_object.append(articles_result)	
+
+    return articles_object
+    
+    
