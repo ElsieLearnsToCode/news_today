@@ -82,6 +82,11 @@ def get_news_articles(id):
 
 def process_news_articles(articles_list):
     '''
+    Function that processes the news articles/api request results and turns them into a list of objects
+    Args:
+        sources_list: A list of dictionaries that contains articles
+    Returns:
+        news_artcles_results: A list of articles/objects
     '''
     articles_object = []
     for article in articles_list:
