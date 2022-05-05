@@ -9,7 +9,7 @@ from ..models import Sources, Articles
 def index():
 
     '''
-    View root page function that returns the index page and its data
+    View root page function that returns/renders the index page (news sources) and its data
     '''
     business_sources = get_news_sources('business')
     sports_sources = get_news_sources('sports')
@@ -27,4 +27,4 @@ def sources(id):
     articles = get_news_articles(id)
     title = f'NH | {id}'
 
-    return render_template('sources.html',id = id, title= title,articles = articles)
+    return render_template('sources.html', id = id, title= title,articles = articles)
